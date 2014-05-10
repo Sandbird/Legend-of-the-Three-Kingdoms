@@ -9,6 +9,7 @@
 
 #import "HelloWorldScene.h"
 #import "IntroScene.h"
+#import "MapLoader.h"
 
 // -----------------------------------------------------------------------
 #pragma mark - HelloWorldScene
@@ -36,23 +37,9 @@
     self = [super init];
     if (!self) return(nil);
     
-    // Enable touch handling on scene node
-    self.userInteractionEnabled = YES;
+    [[OALSimpleAudio sharedInstance] playBg:@"Five Armies.mp3"];
+    [self addChild:[[MapLoader sharedLoader] loadMap]];
     
-    // Create a colored background (Dark Grey)
-    CCNodeColor *background = [CCNodeColor nodeWithColor:[CCColor colorWithRed:0.2f green:0.2f blue:0.2f alpha:1.0f]];
-    [self addChild:background];
-    
-    // Add a sprite
-    _sprite = [CCSprite spriteWithImageNamed:@"Icon-72.png"];
-    _sprite.position  = ccp(self.contentSize.width/2,self.contentSize.height/2);
-    [self addChild:_sprite];
-    
-    // Animate sprite with action
-    CCActionRotateBy* actionSpin = [CCActionRotateBy actionWithDuration:1.5f angle:360];
-    [_sprite runAction:[CCActionRepeatForever actionWithAction:actionSpin]];
-    
-    // Create a back button
     CCButton *backButton = [CCButton buttonWithTitle:@"[ Menu ]" fontName:@"Verdana-Bold" fontSize:18.0f];
     backButton.positionType = CCPositionTypeNormalized;
     backButton.position = ccp(0.85f, 0.95f); // Top Right of screen
@@ -91,6 +78,7 @@
 {
     // always call super onExit last
     [super onExit];
+    [[MapLoader sharedLoader] cleanMap];
 }
 
 // -----------------------------------------------------------------------
