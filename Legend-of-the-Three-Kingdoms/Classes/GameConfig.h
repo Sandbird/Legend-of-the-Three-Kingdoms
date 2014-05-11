@@ -44,8 +44,8 @@
 
 #define IS_HD ([[UIScreen mainScreen] respondsToSelector:@selector(scale)] == YES && [[UIScreen mainScreen] scale] == 2.0f)
 
-#define TILE_HEIGHT 32
-#define TILE_HEIGHT_HD 64
+#define TILE_SIZE 32
+#define TILE_SIZE_SCALE 0.5
 
 typedef enum tagState {
     kStateGrabbed,

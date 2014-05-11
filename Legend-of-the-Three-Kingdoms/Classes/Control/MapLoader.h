@@ -17,4 +17,6 @@
 - (CCTiledMap *)loadMap;
 - (void)cleanMap;
 
+- (CGSize)mapSize;
+
 @end

@@ -14,7 +14,8 @@
     LandformType _type;
 }
 
-- (Landform *)initWithLoaction:(CGPoint)location type:(int)type {
+- (Landform *)initWithLoaction:(CGPoint)location type:(int)type
+{
     self = [super init];
     if (self) {
         _location = location;
@@ -23,21 +24,19 @@
     return self;
 }
 
-- (CGPoint)location {
+- (CGPoint)location
+{
     return _location;
 }
 
-- (LandformType)type {
+- (LandformType)type
+{
     return _type;
 }
 
--(int)fSocre {
+-(int)fSocre
+{
     return _gScore + _hScore;
-}
-
-- (NSString *)description {
-    return [NSString stringWithFormat:@"LandfromType: %i, Location: (%f, %f)",
-            _type, _location.x, _location.y];
 }
 
 @end

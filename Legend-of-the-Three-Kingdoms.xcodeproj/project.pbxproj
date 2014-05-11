@@ -313,6 +313,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040ED95C191E36DB0004B68F /* TileCoordUtil.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TileCoordUtil.h; sourceTree = "<group>"; };
 		043ECCC0191DBF1600E69F55 /* IntroScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IntroScene.h; sourceTree = "<group>"; };
 		043ECCC1191DBF1600E69F55 /* IntroScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IntroScene.m; sourceTree = "<group>"; };
 		043ECCC4191DC01100E69F55 /* MapLoader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MapLoader.h; sourceTree = "<group>"; };
@@ -862,6 +863,7 @@
 			children = (
 				043ECCC4191DC01100E69F55 /* MapLoader.h */,
 				043ECCC5191DC01100E69F55 /* MapLoader.m */,
+				040ED95C191E36DB0004B68F /* TileCoordUtil.h */,
 			);
 			name = Control;
 			path = Classes/Control;

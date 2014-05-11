@@ -17,7 +17,8 @@
     CCTiledMapLayer *unitLayer;
 }
 
-+ (MapLoader *)sharedLoader {
++ (MapLoader *)sharedLoader
+{
     static MapLoader *sharedMapLoaderInstance = nil;
     static dispatch_once_t predicate;
     dispatch_once(&predicate, ^{
@@ -26,13 +27,20 @@
     return sharedMapLoaderInstance;
 }
 
-- (CCTiledMap *)loadMap {
+- (CCTiledMap *)loadMap
+{
     tileMap = [CCTiledMap tiledMapWithFile:@"StageMap.tmx"];
     return tileMap;
 }
 
--(void)cleanMap {
+-(void)cleanMap
+{
     tileMap = nil;
+}
+
+- (CGSize)mapSize
+{
+    return tileMap.mapSize;
 }
 
 @end
