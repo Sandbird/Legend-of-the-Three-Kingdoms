@@ -92,5 +92,8 @@
   <object name="HQ_P1.png" x="64" y="1152" width="64" height="64"/>
   <object name="HQ_P2.png" x="1792" y="64" width="64" height="64"/>
  </objectgroup>
- <objectgroup name="Unit" width="30" height="20"/>
+ <objectgroup name="Unit" width="30" height="20">
+  <object name="Soldier_P1.png" x="128" y="1152" width="64" height="64"/>
+  <object name="Soldier_P2.png" x="1728" y="64" width="64" height="64"/>
+ </objectgroup>
 </map>

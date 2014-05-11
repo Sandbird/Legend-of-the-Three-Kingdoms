@@ -10,6 +10,7 @@
 #import "cocos2d-ui.h"
 #import "IntroScene.h"
 #import "TileCoordUtil.h"
+#import "Unit.h"
 
 @implementation StageScene
 {
@@ -17,6 +18,15 @@
     CCSprite *_cursor;
     CGPoint _preLocation;
     CGSize _viewSize;
+}
+
+#pragma mark - 
+
+static inline CGPoint resetCursorPosition(UITouch * touch, CCLayout *stage, CCSprite *cursor)
+{
+    CGPoint location = [touch locationInNode:stage];
+    cursor.position = positionForTileCoord(tileCoordForPosition(location));
+    return location;
 }
 
 #pragma mark - Create & Destroy
@@ -48,6 +58,15 @@
         build.position = ccp([[properties valueForKeyPath:@"x"] floatValue] * TILE_SIZE_SCALE,
                              [[properties valueForKeyPath:@"y"] floatValue] * TILE_SIZE_SCALE);
         [_stage addChild:build];
+    }
+    
+    CCTiledMapObjectGroup *unitLayer = [map objectGroupNamed:@"Unit"];
+    for (NSDictionary * properties in[unitLayer objects]) {
+        CCSprite *unit = [CCSprite spriteWithImageNamed:[properties valueForKeyPath:@"name"]];
+        unit.anchorPoint = ccp(0.0f, 0.0f);
+        unit.position = ccp([[properties valueForKeyPath:@"x"] floatValue] * TILE_SIZE_SCALE,
+                             [[properties valueForKeyPath:@"y"] floatValue] * TILE_SIZE_SCALE);
+        [_stage addChild:unit];
     }
     
     _cursor = [CCSprite spriteWithImageNamed:@"cursor.png"];
@@ -106,8 +125,7 @@
 
 - (void)touchBegan:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    _preLocation = [touch locationInNode:_stage];
-    _cursor.position = positionForTileCoord(tileCoordForPosition(_preLocation));
+    _preLocation = resetCursorPosition(touch, _stage, _cursor);
 }
 
 - (void)touchMoved:(UITouch *)touch withEvent:(UIEvent *)event
@@ -136,14 +154,29 @@
 
 - (void)touchEnded:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CGPoint location = [touch locationInNode:_stage];
-    _cursor.position = positionForTileCoord(tileCoordForPosition(location));
+    resetCursorPosition(touch, _stage, _cursor);
 }
 
 - (void)touchCancelled:(UITouch *)touch withEvent:(UIEvent *)event
 {
-    CGPoint location = [touch locationInNode:_stage];
-    _cursor.position = positionForTileCoord(tileCoordForPosition(location));
+    resetCursorPosition(touch, _stage, _cursor);
+}
+
+#pragma mark - UnitActionDelegate
+
+- (void)selectUnit:(Unit *)unit withTouch:(UITouch *)touch
+{
+    resetCursorPosition(touch, _stage, _cursor);
+    
+    _cursor.opacity = 0.0f;
+    _cursor.scale = 1.2f;
+    
+    id shrink = [CCActionScaleTo actionWithDuration:.3f scale:1.0f];
+    id fade = [CCActionFadeTo actionWithDuration:.3f opacity:1.0f];
+    
+    id action = [CCActionSpawn actions:shrink, fade, nil];
+    
+    [_cursor runAction:action];
 }
 
 @end

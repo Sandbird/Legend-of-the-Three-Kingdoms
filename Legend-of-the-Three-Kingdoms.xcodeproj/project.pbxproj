@@ -13,6 +13,8 @@
 		043ECCD7191DE94C00E69F55 /* Unit.m in Sources */ = {isa = PBXBuildFile; fileRef = 043ECCD6191DE94C00E69F55 /* Unit.m */; };
 		043ECCDA191DF3A100E69F55 /* Landform.m in Sources */ = {isa = PBXBuildFile; fileRef = 043ECCD9191DF3A100E69F55 /* Landform.m */; };
 		043ECCDE191E0A1C00E69F55 /* StageScene.m in Sources */ = {isa = PBXBuildFile; fileRef = 043ECCDD191E0A1C00E69F55 /* StageScene.m */; };
+		044032B4191F211600F9721B /* TileData.m in Sources */ = {isa = PBXBuildFile; fileRef = 044032B3191F211600F9721B /* TileData.m */; };
+		044032B8191F35E300F9721B /* SelectableSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = 044032B7191F35E300F9721B /* SelectableSprite.m */; };
 		04EE4371191A635700C00E2F /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EE4370191A635700C00E2F /* QuartzCore.framework */; };
 		04EE4373191A635700C00E2F /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EE4372191A635700C00E2F /* OpenGLES.framework */; };
 		04EE4375191A635700C00E2F /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 04EE4374191A635700C00E2F /* OpenAL.framework */; };
@@ -327,6 +329,12 @@
 		043ECCDB191DFDD400E69F55 /* GameConfig.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = GameConfig.h; path = Classes/GameConfig.h; sourceTree = "<group>"; };
 		043ECCDC191E0A1C00E69F55 /* StageScene.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StageScene.h; sourceTree = "<group>"; };
 		043ECCDD191E0A1C00E69F55 /* StageScene.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StageScene.m; sourceTree = "<group>"; };
+		044032B2191F211600F9721B /* TileData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TileData.h; sourceTree = "<group>"; };
+		044032B3191F211600F9721B /* TileData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TileData.m; sourceTree = "<group>"; };
+		044032B5191F23C100F9721B /* UnitActionDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = UnitActionDelegate.h; sourceTree = "<group>"; };
+		044032B6191F35E300F9721B /* SelectableSprite.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectableSprite.h; sourceTree = "<group>"; };
+		044032B7191F35E300F9721B /* SelectableSprite.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectableSprite.m; sourceTree = "<group>"; };
+		044032B9191F367800F9721B /* SelectableSpriteDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SelectableSpriteDelegate.h; sourceTree = "<group>"; };
 		04EE436D191A635700C00E2F /* Legend-of-the-Three-Kingdoms.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Legend-of-the-Three-Kingdoms.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		04EE4370191A635700C00E2F /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		04EE4372191A635700C00E2F /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -876,6 +884,11 @@
 				043ECCBC191DBF1600E69F55 /* Units */,
 				043ECCD8191DF3A100E69F55 /* Landform.h */,
 				043ECCD9191DF3A100E69F55 /* Landform.m */,
+				044032B2191F211600F9721B /* TileData.h */,
+				044032B3191F211600F9721B /* TileData.m */,
+				044032B6191F35E300F9721B /* SelectableSprite.h */,
+				044032B7191F35E300F9721B /* SelectableSprite.m */,
+				044032B9191F367800F9721B /* SelectableSpriteDelegate.h */,
 			);
 			name = Model;
 			path = Classes/Model;
@@ -895,6 +908,7 @@
 				043ECCD3191DE92100E69F55 /* Soldier.m */,
 				043ECCD5191DE94C00E69F55 /* Unit.h */,
 				043ECCD6191DE94C00E69F55 /* Unit.m */,
+				044032B5191F23C100F9721B /* UnitActionDelegate.h */,
 			);
 			path = Units;
 			sourceTree = "<group>";
@@ -2156,6 +2170,7 @@
 				04EE4460191A635800C00E2F /* CCShaderCache.m in Sources */,
 				04EE459D191A635900C00E2F /* CCBSequenceProperty.m in Sources */,
 				043ECCC3191DBF1600E69F55 /* IntroScene.m in Sources */,
+				044032B8191F35E300F9721B /* SelectableSprite.m in Sources */,
 				04EE44A4191A635800C00E2F /* CCGLView.m in Sources */,
 				04EE4467191A635800C00E2F /* CCSprite.m in Sources */,
 				04EE43C3191A635700C00E2F /* CCActionInterval.m in Sources */,
@@ -2230,6 +2245,7 @@
 				04EE44E4191A635800C00E2F /* ZipUtils.m in Sources */,
 				04EE44F5191A635800C00E2F /* OALUtilityActions.m in Sources */,
 				04EE44A0191A635800C00E2F /* CCES2Renderer.m in Sources */,
+				044032B4191F211600F9721B /* TileData.m in Sources */,
 				04EE4570191A635800C00E2F /* aabb.c in Sources */,
 				04EE459A191A635900C00E2F /* CCBsequence.m in Sources */,
 				04EE43FB191A635700C00E2F /* CCLabelAtlas.m in Sources */,

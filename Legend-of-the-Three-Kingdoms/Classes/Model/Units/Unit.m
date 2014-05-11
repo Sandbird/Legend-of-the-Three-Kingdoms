@@ -7,24 +7,47 @@
 //
 
 #import "Unit.h"
+#import "CCTextureCache.h"
 #import "Landform.h"
+#import "SelectableSprite.h"
+#import "StageScene.h"
+#import "TileCoordUtil.h"
 
 @implementation Unit
 
-- (instancetype)init
+#pragma mark - Init
+
+-(id)initWithStage:(CCLayout *)stage
+         tileCoord:(CGPoint)coord
+          delegate:(id<UnitActionDelegate>)delegate
 {
     self = [super init];
     if (self) {
+        _tileCoord = coord;
+        _delegate = delegate;
+        
+        _unit = [SelectableSprite spriteWithImageNamed:@"Soldier_P1.png"];
+        _unit.position = positionForTileCoord(coord);
+        [_unit setUserInteractionEnabled:YES];
+//        [_unit setTexture:[[CCTextureCache sharedTextureCache] addImage:@"Soldier_P2.png"]];
+        [_unit setDelegate:self];
+        [stage addChild:_unit];
     }
     return self;
 }
 
-- (id)initWithLocation:(CGPoint)location {
-    self = [super init];
-    if (self) {
-        _position = location;
-    }
-    return self;
+#pragma mark - SelectableSprite Delegate
+
+- (void)spriteTouched:(UITouch *)touch withEvent:(UIEvent *)event
+{
+    [_delegate selectUnit:self withTouch:touch];
+}
+
+#pragma mark - 
+
+- (void)dealloc
+{
+    _delegate = nil;
 }
 
 @end

@@ -10,23 +10,17 @@
 
 @implementation Landform
 {
-    CGPoint _location;
     LandformType _type;
 }
 
-- (Landform *)initWithLoaction:(CGPoint)location type:(int)type
+- (Landform *)initWithCoord:(CGPoint)coord type:(int)type
 {
     self = [super init];
     if (self) {
-        _location = location;
+        _tileCoord = coord;
         _type = type;
     }
     return self;
-}
-
-- (CGPoint)location
-{
-    return _location;
 }
 
 - (LandformType)type

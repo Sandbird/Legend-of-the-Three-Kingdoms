@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TileData.h"
 
 /**
  * LandformType | 地形种类
@@ -34,15 +35,14 @@ typedef NS_ENUM(int, LandformType) {
     Sea
 };
 
-@interface Landform : NSObject
+@interface Landform : TileData
 
 @property (nonatomic, assign) Landform *adjacentOne;
 @property (nonatomic, assign) int hScore;
 @property (nonatomic, assign, getter = getGScore) int gScore;
 
-- (Landform *)initWithLoaction:(CGPoint) location type:(int)type;
+- (Landform *)initWithCoord:(CGPoint)coord type:(int)type;
 
-- (CGPoint)location;
 - (LandformType)type;
 - (int)fSocre;
 

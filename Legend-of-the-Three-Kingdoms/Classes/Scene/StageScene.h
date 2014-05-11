@@ -7,8 +7,9 @@
 //
 
 #import "cocos2d.h"
+#import "UnitActionDelegate.h"
 
-@interface StageScene : CCScene
+@interface StageScene : CCScene <UnitActionDelegate>
 
 + (StageScene *)scene;
 

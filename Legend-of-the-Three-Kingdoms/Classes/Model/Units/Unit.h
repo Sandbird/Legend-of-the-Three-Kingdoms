@@ -8,11 +8,20 @@
 
 #import "cocos2d.h"
 #import "GameConfig.h"
+#import "SelectableSpriteDelegate.h"
+#import "TileData.h"
 
 @class Landform;
+@class SelectableSprite;
+@class StageScene;
+@protocol UnitActionDelegate;
 
-@interface Unit : CCSprite
+@interface Unit : TileData <SelectableSpriteDelegate>
 {
+    SelectableSprite *_unit;
+    
+    id<UnitActionDelegate> _delegate;
+    
     touchState state;
     int owner;
     BOOL hasRangedWeapon;
@@ -33,7 +42,8 @@
     BOOL selectingAttack;
 }
 
-- (id)initWithLocation:(CGPoint)location;
-
+- (id)initWithStage:(CCLayout *)stage
+          tileCoord:(CGPoint) coord
+           delegate:(id<UnitActionDelegate>) delegate;
 
 @end
